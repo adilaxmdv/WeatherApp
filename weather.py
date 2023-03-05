@@ -3,11 +3,11 @@ from PIL import ImageTk, Image
 import requests
 
 url = 'http://api.openweathermap.org/data/2.5/weather'
-api_key = 'Your Api Key'
+api_key = 'bf343719fc66e38dd0c68d995e7f04b0'#Your Api Key here
 iconUrl = 'http://openweathermap.org/img/wn/{}@2x.png'
 
 def getWeather(city):
-    params = {'q':city,'appid':api_key,'lang':'tr'}
+    params = {'q':city,'appid':api_key,'lang':'en'}
     data = requests.get(url,params = params).json()
     if data:
         city = data ['name'].capitalize()
@@ -30,13 +30,13 @@ def main():
 
 app = Tk()
 app.geometry('300x450')
-app.title('KK Hava Durumu')
+app.title('Weather App')
 
 cityEntry = Entry(app,justify='center')
 cityEntry.pack(fill=BOTH,ipady=10,padx=18,pady=5)
 cityEntry.focus()
 
-searchButton = Button(app, text ='Arama', font=('Arial',15),command=main)
+searchButton = Button(app, text ='Search', font=('Arial',15),command=main)
 searchButton.pack(fill=BOTH,ipady=10,padx=20)
 
 iconLabel= Label(app)
