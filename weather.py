@@ -1,9 +1,14 @@
 from tkinter import *
 from PIL import ImageTk, Image
 import requests
+import configparser
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+
 
 url = 'http://api.openweathermap.org/data/2.5/weather'
-api_key = ''#Your Api Key here
+api_key = config['weather']['api_key']
 iconUrl = 'http://openweathermap.org/img/wn/{}@2x.png'
 
 def getWeather(city):
