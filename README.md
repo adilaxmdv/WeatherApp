@@ -6,7 +6,7 @@
 
 <p></p>
 
-## Requirements and installation 
+## installation 
 
 ```
 pip install -r requirements.txt
