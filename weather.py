@@ -80,4 +80,5 @@ tempLabel.pack()
 conditionLabel = Label(app,font=('Arial',20))
 conditionLabel.pack()
 
+
 mainloop()
