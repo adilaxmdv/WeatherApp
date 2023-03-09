@@ -2,6 +2,8 @@ from tkinter import *
 from PIL import ImageTk, Image
 import requests
 import configparser
+import sv_ttk
+
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -10,6 +12,11 @@ config.read('config.ini')
 url = 'http://api.openweathermap.org/data/2.5/weather'
 api_key = config['weather']['api_key']
 iconUrl = 'http://openweathermap.org/img/wn/{}@2x.png'
+
+app = Tk()
+app.geometry('300x450')
+app.title('Weather App')
+
 
 def getWeather(city):
     params = {'q':city,'appid':api_key,'lang':'en'}
@@ -21,6 +28,8 @@ def getWeather(city):
         icon = data['weather'][0]['icon']
         condition = data['weather'][0]['description']
         return(city,country,temp,icon,condition)
+
+
 def main():
     city =cityEntry.get()
     weather = getWeather(city)
@@ -32,10 +41,21 @@ def main():
         iconLabel.configure(image=icon)
         iconLabel.image= icon
 
+#Dark & Light Mode Button function
+is_on=False
+def toggle():
+    global is_on
+    is_on = not is_on
+    if is_on:
+        button.config(text="Dark Mode")
+        # Açma işlemleri burada yapılacak
+        sv_ttk.set_theme("dark")
 
-app = Tk()
-app.geometry('300x450')
-app.title('Weather App')
+    else:
+        button.config(text="Light Mode")
+        # Kapama işlemleri burada yapılacak
+        sv_ttk.set_theme("light")
+
 
 cityEntry = Entry(app,justify='center')
 cityEntry.pack(fill=BOTH,ipady=10,padx=18,pady=5)
@@ -43,6 +63,10 @@ cityEntry.focus()
 
 searchButton = Button(app, text ='Search', font=('Arial',15),command=main)
 searchButton.pack(fill=BOTH,ipady=10,padx=20)
+
+button = Button(app, text="Light Mode", command=toggle)
+button.pack(ipady=10,padx=18,pady=5)
+button.focus()
 
 iconLabel= Label(app)
 iconLabel.pack()
