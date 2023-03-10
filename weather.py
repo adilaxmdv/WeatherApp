@@ -19,17 +19,18 @@ app.title('Weather App')
 
 
 def getWeather(city):
-    params = {'q':city,'appid':api_key,'lang':'en'}
-    data = requests.get(url,params = params).json()
-    if data:
-        city = data ['name'].capitalize()
-        country = data['sys']['country']
-        temp = int(data['main']['temp'] -273.15)
-        icon = data['weather'][0]['icon']
-        condition = data['weather'][0]['description']
-        return(city,country,temp,icon,condition)
-
-
+    try:
+        params = {'q':city,'appid':api_key,'lang':'en'}
+        data = requests.get(url,params = params).json()
+        if data:
+            city = data ['name'].capitalize()
+            country = data['sys']['country']
+            temp = int(data['main']['temp'] -273.15)
+            icon = data['weather'][0]['icon']
+            condition = data['weather'][0]['description']
+            return(city,country,temp,icon,condition)
+    except:
+        print("Incorrect place name. Please, correct it")
 def main():
     city =cityEntry.get()
     weather = getWeather(city)
