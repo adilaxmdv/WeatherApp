@@ -15,7 +15,7 @@ This Weatherapp basically utilizes 3 major libraries, they are.
 
 -  **Pillow** - Python Imaging Library that support for opening, manipulating, and saving many different image file formats.
 
--  **Tkintor** - Tkinter is a Python used for developing GUI applications. Graphical components like buttons, input fields , dropdowns can be added using this.
+-  **Tkinter** - Tkinter is a Python used for developing GUI applications. Graphical components like buttons, input fields , dropdowns can be added using this.
 
 -  **Requests** - As we are using the openweathermap API we need a HTTP library to send and make requests. Requests is a HTTP library we can make HTTP requests simpler and more human-friendly.
 
@@ -26,7 +26,7 @@ This Project uses Python 3 as the main programming language, you need to clone t
 Cloning the Repo
 
 ```sh
-git clone "repositary Link"
+git clone "repository Link"
 ```
 
 Installing the requirements using the requirements.txt file
