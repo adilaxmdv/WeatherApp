@@ -18,7 +18,7 @@ This Weatherapp basically utilizes 3 major libraries, they are.
 -  **Tkinter** - Tkinter is a Python used for developing GUI applications. Graphical components like buttons, input fields , dropdowns can be added using this.
 
 -  **Requests** - As we are using the openweathermap API we need a HTTP library to send and make requests. Requests is a HTTP library we can make HTTP requests simpler and more human-friendly.
-- [**Sun-Valley Teme**](https://github.com/rdbende/Sun-Valley-ttk-theme) - A gorgeous theme for tkinter, based on Microsoft's Sun Valley visual styles ✨
+- [**Sun-Valley Theme**](https://github.com/rdbende/Sun-Valley-ttk-theme) - A gorgeous theme for tkinter, based on Microsoft's Sun Valley visual styles ✨
 
 
 
