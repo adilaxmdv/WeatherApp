@@ -1,4 +1,4 @@
-from tkinter import *
+import customtkinter
 from PIL import ImageTk, Image
 import requests
 import configparser
@@ -13,7 +13,7 @@ url = 'http://api.openweathermap.org/data/2.5/weather'
 api_key = config['weather']['api_key']
 iconUrl = 'http://openweathermap.org/img/wn/{}@2x.png'
 
-app = Tk()
+app = customtkinter.CTk()
 app.geometry('300x450')
 app.title('Weather App')
 
@@ -30,15 +30,16 @@ def getWeather(city):
             condition = data['weather'][0]['description']
             return(city,country,temp,icon,condition)
     except:
-        print("Incorrect place name. Please, correct it")
+        print(f"No data available on {city}")
+
 def main():
     city =cityEntry.get()
     weather = getWeather(city)
     if weather:
-        locationLabel['text'] = '{},{}'.format(weather[0],weather[1])
-        tempLabel['text']= '{}°C'.format(weather[2])
-        conditionLabel['text']=weather[4]
-        icon = ImageTk.PhotoImage(Image.open(requests.get(iconUrl.format(weather[3]),stream=True).raw))
+        locationLabel.configure(text = '{},{}'.format(weather[0],weather[1]) )
+        tempLabel.configure( text = '{}°C'.format(weather[2]) )
+        conditionLabel.configure( text = weather[4] )
+        icon = customtkinter.CTkImage(Image.open(requests.get(iconUrl.format(weather[3]),stream=True).raw), size=(30, 30))
         iconLabel.configure(image=icon)
         iconLabel.image= icon
 
@@ -48,38 +49,38 @@ def toggle():
     global is_on
     is_on = not is_on
     if is_on:
-        button.config(text="Dark Mode")
-        # Açma işlemleri burada yapılacak
-        sv_ttk.set_theme("dark")
+        button.configure(text="Dark Mode")
+        customtkinter.set_appearance_mode("light")
+        customtkinter.set_default_color_theme("dark-blue")
 
     else:
-        button.config(text="Light Mode")
-        # Kapama işlemleri burada yapılacak
-        sv_ttk.set_theme("light")
+        button.configure(text="Light Mode")
+        customtkinter.set_appearance_mode("dark")
+        customtkinter.set_default_color_theme("dark-blue")
 
 
-cityEntry = Entry(app,justify='center')
-cityEntry.pack(fill=BOTH,ipady=10,padx=18,pady=5)
+cityEntry = customtkinter.CTkEntry(app,justify='center', placeholder_text="Enter City Name")
+cityEntry.pack(fill=customtkinter.BOTH,ipady=10,padx=18,pady=5)
 cityEntry.focus()
 
-searchButton = Button(app, text ='Search', font=('Arial',15),command=main)
-searchButton.pack(fill=BOTH,ipady=10,padx=20)
+searchButton = customtkinter.CTkButton(app, text ='Search', font=('Arial',15),command=main)
+searchButton.pack(fill=customtkinter.BOTH,ipady=10,padx=20)
 
-button = Button(app, text="Light Mode", command=toggle)
+button = customtkinter.CTkButton(app, text="Dark Mode", command=toggle)
 button.pack(ipady=10,padx=18,pady=5)
 button.focus()
 
-iconLabel= Label(app)
+iconLabel= customtkinter.CTkLabel(app, text="")
 iconLabel.pack()
 
-locationLabel = Label(app,font=('Arial',30))
+locationLabel = customtkinter.CTkLabel(app,font=('Arial',30), text="")
 locationLabel.pack()
 
-tempLabel = Label(app,font=('Arial',15,'bold'))
+tempLabel = customtkinter.CTkLabel(app,font=('Arial',15,'bold'), text="")
 tempLabel.pack()
 
-conditionLabel = Label(app,font=('Arial',20))
+conditionLabel = customtkinter.CTkLabel(app,font=('Arial',20), text="")
 conditionLabel.pack()
 
 
-mainloop()
+app.mainloop()
