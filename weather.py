@@ -2,7 +2,6 @@ import customtkinter
 from PIL import ImageTk, Image
 import requests
 import configparser
-import sv_ttk
 
 
 config = configparser.ConfigParser()
@@ -39,7 +38,7 @@ def main():
         locationLabel.configure(text = '{},{}'.format(weather[0],weather[1]) )
         tempLabel.configure( text = '{}°C'.format(weather[2]) )
         conditionLabel.configure( text = weather[4] )
-        icon = customtkinter.CTkImage(Image.open(requests.get(iconUrl.format(weather[3]),stream=True).raw), size=(30, 30))
+        icon = customtkinter.CTkImage(Image.open(requests.get(iconUrl.format(weather[3]),stream=True).raw), size=(100, 100))
         iconLabel.configure(image=icon)
         iconLabel.image= icon
 
