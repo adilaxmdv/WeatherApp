@@ -1,4 +1,4 @@
-tk==0.1.0
 Pillow==9.4.0
 configparser==5.3.0
 sv-ttk==2.4
+customtkinter==5.1.2
