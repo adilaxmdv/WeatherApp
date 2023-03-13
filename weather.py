@@ -69,7 +69,7 @@ button = customtkinter.CTkButton(app, text="Dark Mode", command=toggle)
 button.pack(ipady=10,padx=18,pady=5)
 button.focus()
 
-iconLabel= customtkinter.CTkLabel(app, text="")
+iconLabel= customtkinter.CTkLabel(app, text="", width=80,height=80)
 iconLabel.pack()
 
 locationLabel = customtkinter.CTkLabel(app,font=('Arial',30), text="")
