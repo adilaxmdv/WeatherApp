@@ -1,6 +1,6 @@
 # Weather App
 
-This Weather app is building python using the Libraries and a API provided by openweathermap for more information about this api visit [here]("https://openweathermap.org/api").
+This Weather app is building python using the Libraries and a API provided by OpenWeatherMap. For more information about this API visit [here]("https://openweathermap.org/api").
 
 ## Features
 
@@ -23,7 +23,7 @@ This Weatherapp basically utilizes 3 major libraries, they are.
 
 ## Installation
 
-This Project uses Python 3 as the main programming language, you need to clone the repository first inorder to use it. All the libraries used are added to the requirements.txt file you can install the project using the commands shown bellow.
+This Project uses Python 3 as the main programming language, you need to first clone the repository in order to use it. All the libraries used are added to the requirements.txt file. You can install the project using the commands shown bellow.
 
 Cloning the Repo
 
@@ -38,7 +38,7 @@ cd weatherapp
 pip install -r requirements.txt
 ```
 
--  Before running the weatherapp you need to add your openweathermap api key in the config.ini file, then run the following command.
+-  Before running the WeatherApp you need to add your OpenWeatherMap API key in the config.ini file, then run the following command.
 
 Running the application.
 
