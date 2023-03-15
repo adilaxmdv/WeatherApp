@@ -22,7 +22,7 @@ def getWeather(city):
         params = {'q':city,'appid':api_key,'lang':'en'}
         data = requests.get(url,params = params).json()
         if data:
-            city = data ['name'].capitalize()
+            city = str(data['name']).title()
             country = data['sys']['country']
             temp = int(data['main']['temp'] -273.15)
             icon = data['weather'][0]['icon']
