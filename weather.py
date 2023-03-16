@@ -62,6 +62,9 @@ cityEntry = customtkinter.CTkEntry(app,justify='center', placeholder_text="Enter
 cityEntry.pack(fill=customtkinter.BOTH,ipady=10,padx=18,pady=5)
 cityEntry.focus()
 
+# add enter key event
+cityEntry.bind('<Return>', lambda event: main())
+
 searchButton = customtkinter.CTkButton(app, text ='Search', font=('Arial',15),command=main)
 searchButton.pack(fill=customtkinter.BOTH,ipady=10,padx=20)
 
